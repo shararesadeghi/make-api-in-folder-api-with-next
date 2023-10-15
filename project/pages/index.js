@@ -34,6 +34,20 @@ export default function Home() {
     setTodos(data.data);
 
   }
+
+  const replaceHandler = async ()=>{
+    const res = await fetch("/api/todos",{
+      method: "PUT",
+      body: JSON.stringify([
+      {id:7, title: "todo 7"},
+      {id:8, title: "todo 8"},
+    ]),
+      headers: {"Content-Type":"application/json"}
+    });
+    const data = await res.json();
+    setTodos(data.data)
+    
+  }
   return (
     <div className={styles.container}>
       <h1>Api Routes Home page</h1>
@@ -47,6 +61,9 @@ export default function Home() {
       </div>
       <div>
         <button onClick={deleteHandler}>Delete All</button>
+      </div>
+      <div>
+        <button onClick={replaceHandler}>Replace All</button>
       </div>
     </div>
   )

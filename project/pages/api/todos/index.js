@@ -21,5 +21,11 @@ export default function handler(req,res){
             message: "All todos deleted",
             data:[]
         })
+    }else if(req.method === "PUT"){
+        //Replace all data
+        res.status(200).json({
+            message:"All data replaced",
+            data:req.body
+        })
     }
 }
